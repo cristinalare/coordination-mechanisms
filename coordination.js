@@ -20,6 +20,7 @@ const introSection = document.querySelector('.intro');
 const introMeshes = document.querySelectorAll('.intro_mesh');
 const loadingSection = document.querySelector('.loading');
 const minLoadedMeshes = introMeshes.length + 4;
+let pageLoaded = false;
 // helpers
 
 const handle3dClick = (element, fn) => {
@@ -237,7 +238,8 @@ function main() {
       mesh.scale.set(0.2, 0.2, 0.2);
 
       count++;
-      if (disabledScroll && count === minLoadedMeshes) {
+      console.log(count);
+      if (!pageLoaded) {
         loadingSection.style.opacity = '0';
         introSection.style.opacity = '1';
         mechanismsContainer.style.display = 'flex';
@@ -245,7 +247,8 @@ function main() {
         setTimeout(() => {
           loadingSection.style.display = 'none';
         }, 1000);
-      }
+        pageLoaded = true;
+      } 
 
     }, function(progress) {
       if (disabledScroll) {
