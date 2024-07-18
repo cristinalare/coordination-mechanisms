@@ -248,7 +248,7 @@ function main() {
           loadingSection.style.display = 'none';
         }, 1000);
         pageLoaded = true;
-      }
+      } 
 
     }, function(progress) {
       if (disabledScroll) {
